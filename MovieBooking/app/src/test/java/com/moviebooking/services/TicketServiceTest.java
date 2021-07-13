@@ -1,6 +1,6 @@
 package com.moviebooking.services;
 
-import com.moviebooking.dto.SeatNotAvailableException;
+import com.moviebooking.exceptions.SeatNotAvailableException;
 import com.moviebooking.entities.*;
 import com.moviebooking.exceptions.NoSuchTicketFoundException;
 import com.moviebooking.repositories.CustomerRepository;
@@ -90,7 +90,7 @@ public class TicketServiceTest {
 
     @Test
     @DisplayName("bookTicket method should Throw Exception If Seat is Already Booked")
-    public void bookTicket_ShouldThrowExceptionIfSeatAlreadyBooked() throws SeatNotAvailableException {
+    public void bookTicket_ShouldThrowExceptionIfSeatAlreadyBooked() {
         //Arrange
         showSeat1_1_2.lock();
 
@@ -103,7 +103,9 @@ public class TicketServiceTest {
         when(showSeatRepository.getShowSeat(anyString(), anyString())).thenReturn(showSeat1_1_2, showSeat1_1_3, showSeat1_1_2, showSeat1_1_3);
 
         //Act and Assert
-        Assertions.assertThrows(SeatNotAvailableException.class, () -> ticketService.bookTicket("1","1", seatList));
+        Assertions.assertThrows(SeatNotAvailableException.class,
+                () -> ticketService.bookTicket("1","1", seatList)
+        );
     }
 
     @Test
@@ -136,12 +138,14 @@ public class TicketServiceTest {
 
     @Test
     @DisplayName("cancelTicket method should Throw Exception If No Ticket Found Given Ticket Id")
-    public void cancelTicket_GivenTicketId_ShouldShouldThrowExceptionIfNoTicketFound() throws NoSuchTicketFoundException {
+    public void cancelTicket_GivenTicketId_ShouldShouldThrowExceptionIfNoTicketFound() {
         //Arrange
         when(ticketRepository.getTicketById(1)).thenReturn(null);
 
         //Act and Assert
-        Assertions.assertThrows(NoSuchTicketFoundException.class, () -> ticketService.cancelTicket(1));
+        Assertions.assertThrows(NoSuchTicketFoundException.class,
+                () -> ticketService.cancelTicket(1)
+        );
 
         verify(ticketRepository).getTicketById(1);
     }

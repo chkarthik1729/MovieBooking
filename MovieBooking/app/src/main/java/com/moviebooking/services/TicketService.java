@@ -1,6 +1,6 @@
 package com.moviebooking.services;
 
-import com.moviebooking.dto.SeatNotAvailableException;
+import com.moviebooking.exceptions.SeatNotAvailableException;
 import com.moviebooking.entities.*;
 import com.moviebooking.exceptions.NoSuchTicketFoundException;
 import com.moviebooking.repositories.ICustomerRepository;

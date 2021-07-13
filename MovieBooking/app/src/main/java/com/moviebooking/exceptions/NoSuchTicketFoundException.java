@@ -4,6 +4,6 @@ public class NoSuchTicketFoundException extends Exception {
 
     @Override
     public String toString() {
-        return "No Such Ticket found!";
+        return "No Such Ticket Found!";
     }
 }

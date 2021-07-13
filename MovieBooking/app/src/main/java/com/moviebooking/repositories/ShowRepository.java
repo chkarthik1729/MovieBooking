@@ -33,6 +33,6 @@ public class ShowRepository implements IShowRepository{
 
     @Override
     public void saveShow(Show show) {
-        showMap.put(show.getId(),show);
+        showMap.put(show.getId(), show);
     }
 }

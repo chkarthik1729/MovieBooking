@@ -1,4 +1,4 @@
-package com.moviebooking.dto;
+package com.moviebooking.exceptions;
 
 public class SeatNotAvailableException extends Exception{
 

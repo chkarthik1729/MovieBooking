@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class TicketRepository implements ITicketRepository {
 
-    private static Integer counter = 0;
+    private Integer counter = 0;
     private final Map<Integer, Ticket> ticketMap;
 
     public TicketRepository() {
@@ -20,7 +20,7 @@ public class TicketRepository implements ITicketRepository {
 
     public TicketRepository(Map<Integer, Ticket> ticketMap, Integer counter) {
         this.ticketMap = ticketMap;
-        TicketRepository.counter = counter;
+        this.counter = counter;
     }
 
     @Override

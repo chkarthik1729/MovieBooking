@@ -22,8 +22,8 @@ public class ShowService implements IShowService {
     public List<ShowResponse> getAllShowsByMovieTitle(String movieTitle) {
         List<ShowResponse> getShowResponseList = new ArrayList<>();
         List<Show> showList = iShowRepository.getAllShowsForMovieName(movieTitle);
-        for (Show show : showList) {
 
+        for (Show show : showList) {
             getShowResponseList.add(
                 new ShowResponse(
                     show.getId(),
@@ -35,6 +35,7 @@ public class ShowService implements IShowService {
                 )
             );
         }
+
         return getShowResponseList;
     }
 

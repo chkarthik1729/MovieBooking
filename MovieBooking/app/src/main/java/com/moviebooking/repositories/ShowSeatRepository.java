@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class ShowSeatRepository implements IShowSeatRepository{
 
-    private final Map<String,ShowSeat> showSeatMap;
+    private final Map<String, ShowSeat> showSeatMap;
 
     public ShowSeatRepository() {
         showSeatMap = new HashMap<>();
@@ -25,7 +25,9 @@ public class ShowSeatRepository implements IShowSeatRepository{
     public List<ShowSeat> getShowSeatsByShowId(String id) {
         return showSeatMap.values()
                 .stream()
-                .filter(s -> { String showId = s.getId().split("#")[0]; return id.equals(showId);
+                .filter(s -> {
+                    String showId = s.getId().split("#")[0];
+                    return id.equals(showId);
                 })
                 .collect(Collectors.toList());
     }
@@ -39,9 +41,9 @@ public class ShowSeatRepository implements IShowSeatRepository{
     @Override
     public void addShowSeats(Show show, List<Seat> seatList) {
         seatList.forEach(seat -> {
-                    String id = show.getId() + "#" + seat.getId();
-                    showSeatMap.put(id,new ShowSeat(id,seat,show));
-                });
+            String id = show.getId() + "#" + seat.getId();
+            showSeatMap.put(id, new ShowSeat(id,seat,show));
+        });
     }
 
     @Override
